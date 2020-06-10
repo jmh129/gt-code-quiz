@@ -5,7 +5,7 @@ var timeEl = document.getElementById("time");
 var cardTitle = document.querySelector(".card-title");
 var cardText = document.querySelector(".card-text");
 var listChoices = document.querySelector(".list");
-var submitButtonEl = document.getElementById("submit-button");
+var submitButtonEl = document.querySelector(".card-text");
 
 // QUESTION AND ANSWER(S) ARRAYS
 // var questions = ["Commonly used data types DO NOT include:"];
@@ -53,19 +53,6 @@ var arrayOfQuestions = [
     answer: "Quotes",
   },
 ];
-// Start the game and begin timer.
-startGameBtnEl.addEventListener("click", function () {
-  // console.log("Button Clicked.");
-  console.log(startGameBtnEl);
-  timeRemain();
-  renderQuestion();
-});
-
-// submitButtonEl.addEventListener("click", function () {
-//   currentQuestionIndex++;
-//   console.log("Submit Button")
-//   console.log(currentQuestionIndex);
-// });
 
 function renderQuestion() {
   var currentQuestion = arrayOfQuestions[currentQuestionIndex];
@@ -84,8 +71,8 @@ function renderQuestion() {
   // LOOP TO ITERATE THROUGH ARRAY
   for (var i = 0; i < currentQuestion.answers.length; i++) {
     var answersEl = document.createElement("li");
+    answersEl.setAttribute("id", "submit-button");
     answersEl.setAttribute("class", "btn btn-primary");
-    // answersEl.setAttribute("id", "submit-button");
     var choices = currentQuestion.answers[i];
     answersEl.textContent = choices;
     cardText.append(answersEl);
@@ -104,3 +91,20 @@ function timeRemain() {
     }
   }, 1000);
 }
+
+// EVENT LISTENERS 
+
+// Start the game and begin timer.
+startGameBtnEl.addEventListener("click", function () {
+  // console.log("Button Clicked.");
+  console.log(startGameBtnEl);
+  timeRemain();
+  renderQuestion();
+});
+
+submitButtonEl.addEventListener("click", function () {
+  currentQuestionIndex++;
+  renderQuestion();
+  console.log("submitButtonEl")
+  console.log(currentQuestionIndex);
+});
