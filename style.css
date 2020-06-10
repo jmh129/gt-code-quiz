@@ -1,9 +1,22 @@
+
+/* Nav Bar Color Scheme */
 .navbar-light .navbar-brand {
     color: #553c7b;;
 }
 
+.navbar-light .navbar-brand:hover {
+    color:#C08BB1;
+}
+
+/* Main Card Color Scheme */
 .btn-primary {
     color: #fff;
     background-color: #553C7B;
     border-color: #553C7B;
+}
+
+.btn-primary:hover {
+    color: #fff;
+    background-color: #C08BB1;
+    border-color: #C08BB1;
 }
