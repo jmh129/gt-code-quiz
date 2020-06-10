@@ -1,3 +1,4 @@
+// VARIABLE DEFINITIONS
 var startGameBtnEl = document.getElementById("start-button");
 var startPageEl = document.getElementById("start-page");
 var timeEl = document.getElementById("time");
@@ -5,40 +6,51 @@ var cardTitle = document.querySelector(".card-title");
 var cardText = document.querySelector(".card-text");
 var listGroup = document.querySelector(".list-group");
 
-var question = ["Commonly used data types DO NOT include:"];
+// QUESTION AND ANSWER(S) ARRAYS 
+var questions = ["Commonly used data types DO NOT include:", "next question"];
 var answers = ["strings", "booleans", "alerts", "numbers"];
+
 
 // Start the game and begin timer.
 startGameBtnEl.addEventListener("click", function () {
   // console.log("Button Clicked.");
-  // startPageEl.style.display = "none";
   timeRemain();
   renderQuestion();
 });
 
 // Function to render the question to the card.
+// Need to figure out how to display Questions and Answers. Refernce todays videos
 function renderQuestion() {
   cardTitle.textContent = "";
   cardText.textContent = "";
   startGameBtnEl.remove();
-  cardTitle.textContent = question[0];
+  cardTitle.textContent = questions[0];
+  var button = document.createElement("button");
+  button.textContent = "Submit";
+  cardText.appendChild(button);
+  
+  
+  // var li = document.createElement("li");
+  //   li.textContent = answers;
+  //   li.setAttribute("data-index", []);
 
-  // Loop for answers in array still testing this 
-  for (i = 0; i < answers.length; i++) {
-    var answer = answers[i];
-    cardText.innerHTML += answers[i] + "<br>";
-  }
+  //   var button = document.createElement("button");
+  //   button.textContent = "Submit";
+
+  //   li.appendChild(button);
+    // todoList.appendChild(li);
+
+  // // Loop for answers in array still testing this 
+  // for (i = 0; i < answers.length; i++) {
+  //   var answer = answers[i];
+  //   cardText.innerHTML += answers[i] + "<br>";
+  // }
 }
 
-// function startQuiz(event) {
-//   if (event.target.matches(".btn")) {
-//     startPageEl.style.display = "none";
-//   } else {
-//     startPageEl.style.display = "block";
-//   }
-// }
+// for (var i = 0; i < todos.length; i++) {
+//   var todo = todos[i];
 
-// Timer function
+// TIMER FUNCTION
 function timeRemain() {
   var timeLeft = 60;
   var timeInterval = setInterval(function () {
