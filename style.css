@@ -1,12 +1,17 @@
 
 /* Nav Bar Color Scheme */
 .navbar-light .navbar-brand {
-    color: #553c7b;;
+    color: #553c7b;
 }
 
 .navbar-light .navbar-brand:hover {
     color:#C08BB1;
 }
+
+#time {
+    color: #553c7b;
+}
+
 
 /* Main Card Color Scheme */
 .btn-primary {
