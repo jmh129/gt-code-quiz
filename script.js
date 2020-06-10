@@ -9,6 +9,7 @@ var listGroup = document.querySelector(".list-group");
 // QUESTION AND ANSWER(S) ARRAYS 
 var questions = ["Commonly used data types DO NOT include:", "next question"];
 var answers = ["strings", "booleans", "alerts", "numbers"];
+var answer = ["alerts"]
 
 
 // Start the game and begin timer.
@@ -24,31 +25,29 @@ function renderQuestion() {
   cardTitle.textContent = "";
   cardText.textContent = "";
   startGameBtnEl.remove();
+
+  // SET TITLE TO SHOW QUESTIONS 
   cardTitle.textContent = questions[0];
-  var button = document.createElement("button");
-  button.textContent = "Submit";
-  cardText.appendChild(button);
-  
-  
-  // var li = document.createElement("li");
-  //   li.textContent = answers;
-  //   li.setAttribute("data-index", []);
 
-  //   var button = document.createElement("button");
-  //   button.textContent = "Submit";
+  // CREATE A LIST OF ITEMS OF ANSWERS
+  // cardText.textContent = answers[0];
 
-  //   li.appendChild(button);
-    // todoList.appendChild(li);
+  for (var i = 0; i < answers.length; i++) {
+    var choice = answers[i];
 
-  // // Loop for answers in array still testing this 
-  // for (i = 0; i < answers.length; i++) {
-  //   var answer = answers[i];
-  //   cardText.innerHTML += answers[i] + "<br>";
-  // }
+    var li = document.createElement("li");
+    li.textContent = choice;
+    li.setAttribute("data-index", i);
+    cardText.appendChild(li);
+  }
 }
+ 
 
-// for (var i = 0; i < todos.length; i++) {
-//   var todo = todos[i];
+  
+  // CREATED BUTTON AS REFERENCE
+  // var button = document.createElement("button");
+  // button.textContent = "Submit";
+  // cardText.appendChild(button);
 
 // TIMER FUNCTION
 function timeRemain() {

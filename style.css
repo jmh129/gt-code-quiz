@@ -25,3 +25,7 @@
     background-color: #C08BB1;
     border-color: #C08BB1;
 }
+
+.card-text {
+    text-align: left;
+}
