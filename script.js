@@ -1,6 +1,6 @@
 var startGameBtnEl = document.getElementById("start-button");
 var startPageEl = document.getElementById("start-page");
-var timeEl = document.querySelector("time");
+var timeEl = document.getElementById("time");
 
 startGameBtnEl.addEventListener("click", function () {
   console.log("Button Clicked.");
@@ -19,7 +19,10 @@ startGameBtnEl.addEventListener("click", function () {
 function timeRemain() {
   var timeLeft = 60;
   var timeInterval = setInterval(function () {
-    time.textContent = "Time: " + timeLeft;
+    timeEl.textContent = "Time: " + timeLeft;
     timeLeft--;
+    if (timeLeft === -1) {
+      clearInterval(timeInterval);
+    }
   }, 1000);
 }
