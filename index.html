@@ -21,19 +21,29 @@
   </head>
 
   <body>
+    <!-- Nav Bar -->
     <nav class="navbar navbar-light bg-light">
       <a class="navbar-brand" href="#">View Highscores</a>
       <div id="time">Time: 0</div>
     </nav>
+    <!-- Main Content  -->
     <main>
       <section class="conatiner">
-        <div class="card text-center" style="width: 45rem; margin: 0 auto;">
+        <div
+          class="card text-center"
+          style="width: 45rem; margin: 0 auto;"
+        >
           <div class="card-body" id="start-page">
             <h5 class="card-title">Coding Quiz Challenge!</h5>
             <p class="card-text">
-              Try to answer the following code-related questions within the time limit. Keep in mind that incorrect answers will penalize your score/time by ten seconds!
+              Try to answer the following code-related questions
+              within the time limit. Keep in mind that incorrect
+              answers will penalize your score/time by ten seconds!
             </p>
-            <button class="btn btn-primary" id="start-button">Start Quiz</button>
+            <ul class="list-group"></ul>
+            <button class="btn btn-primary" id="start-button">
+              Start Quiz
+            </button>
           </div>
         </div>
       </section>
