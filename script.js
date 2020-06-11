@@ -9,6 +9,7 @@ var submitButtonEl = document.querySelector(".card-text");
 var correctOrWrongEl = document.getElementById("footer");
 
 var answersEl;
+var timeLeft;
 var score = 0;
 
 var currentQuestionIndex = 0;
@@ -81,17 +82,13 @@ function renderQuestion() {
   }
 }
 
-// BUILD OUT COMPARE ANSWERS
-// innerText compare to correct answers
-// Check innertext click event.
-
 // BUILD OUT END OF GAME
 
 // BUILD OUT HIGHSCORE PAGE
 
 // TIMER FUNCTION
 function timeRemain() {
-  var timeLeft = 60;
+  timeLeft = 60;
   var timeInterval = setInterval(function () {
     timeEl.textContent = "Time: " + timeLeft;
     timeLeft--;
@@ -113,25 +110,22 @@ function correctAnswer() {
 
 function wrongAnswer() {
   score = score - 10;
+  timeLeft = timeLeft - 10;
   alert("Wrong");
   currentQuestionIndex++;
 }
 
 // EVENT LISTENERS
 
-// Start the game and begin timer.
+// START GAME AND BEGIN TIMER
 startGameBtnEl.addEventListener("click", function () {
-  // console.log(this.innerHTML);
-  // console.log(startGameBtnEl);
   timeRemain();
   renderQuestion();
 });
 
-// CHECK IF BUTTON CLICKED CONTAINS ANSWER
+// CHECK IF BUTTON CLICKED CONTAINS ANSWER MOVE TO NEXT QUESTION
 submitButtonEl.addEventListener("click", function (event) {
   var element = event.target;
-  // console.log(arrayOfQuestions[currentQuestionIndex]["answer"]);
-  // console.log(element.dataset.index);
   if (
     element.dataset.index ==
     arrayOfQuestions[currentQuestionIndex]["answer"]
@@ -142,12 +136,4 @@ submitButtonEl.addEventListener("click", function (event) {
     wrongAnswer();
     renderQuestion();
   }
-  console.log(score);
-  // currentQuestionIndex++;
-  //   renderQuestion();
-  // } else {
-  //   alert("wrong!");
-  //   currentQuestionIndex++;
-  //   renderQuestion();
-  // }
 });
