@@ -27,5 +27,5 @@
 }
 
 .card-text {
-    text-align: left;
+    float: left;
 }
