@@ -122,7 +122,7 @@ function endOfQUiz() {
 
 // TIMER FUNCTION
 function timeRemain() {
-  timeLeft = 5;
+  timeLeft = 60;
   var timeInterval = setInterval(function () {
     timeEl.textContent = "Time: " + timeLeft;
     timeLeft--;
