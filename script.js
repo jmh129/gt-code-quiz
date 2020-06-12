@@ -4,7 +4,6 @@ var startPageEl = document.getElementById("start-page");
 var timeEl = document.getElementById("time");
 var cardTitle = document.querySelector(".card-title");
 var cardText = document.querySelector(".card-text");
-var listChoices = document.querySelector(".list");
 var submitButtonEl = document.querySelector(".card-text");
 var correctOrWrongEl = document.getElementById("footer");
 
@@ -63,7 +62,8 @@ var arrayOfQuestions = [
 function renderQuestion() {
   var currentQuestion = arrayOfQuestions[currentQuestionIndex];
   if (currentQuestionIndex > 4) {
-    alert("End of Quiz! Your score is " + score + ".");
+    timeLeft = 0;
+    endOfQUiz();
   }
   cardTitle.textContent = "";
   cardText.textContent = "";
@@ -96,20 +96,27 @@ function correctAnswer() {
 function wrongAnswer() {
   score = score - 10;
   timeLeft = timeLeft - 10;
-  alert("Wrong!");
+  alert("Wrong! Ten Seconds has been deducted...");
   currentQuestionIndex++;
 }
 
-// UNDER CONSTRUCTION
-// function endOfQUiz() {
-//   cardTitle.textContent = "";
-//   cardText.textContent = "";
-//   cardTitle.textContent = "Quiz Complete!";
-//   cardText.textContent = "Your final score is " + score + ".";
-//   // var emailForm = document.createElement("input");
-//   // emailForm.setAttribute("type", "input");
-
-// }
+// END OF QUIZ INITIALS INPUT
+function endOfQUiz() {
+  // alert("End of Quiz! Your score is " + score + ".");
+  cardTitle.textContent = "";
+  cardText.textContent = "";
+  cardTitle.textContent = "Quiz Complete!";
+  var createScoreCard = document.createElement("p");
+  createScoreCard.textContent = "Your final score is " + score + ".";
+  cardTitle.appendChild(createScoreCard);
+  var enterInitials = document.createElement("form");
+  enterInitials.setAttribute("id", "myForm");
+  createScoreCard.appendChild(enterInitials);
+  var initialsInput = document.createElement("input");
+  initialsInput.setAttribute("id", "text");
+  initialsInput.setAttribute("placeholder", "Enter Your Initials");
+  document.getElementById("myForm").appendChild(initialsInput);
+}
 
 // BUILD OUT HIGHSCORE PAGE seperate html
 
@@ -122,7 +129,8 @@ function timeRemain() {
     // console.log("Timer Started");
     if (timeLeft <= -1) {
       clearInterval(timeInterval);
-      alert("Times Up! Your Score is " + score + ".");
+      // alert("Quiz Over! Your Score is " + score + ".");
+      endOfQUiz();
     }
   }, 1000);
 }
