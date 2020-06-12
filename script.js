@@ -125,7 +125,7 @@ function endOfQUiz() {
 
   var initialsInput = document.createElement("input");
   initialsInput.setAttribute("id", "text");
-  initialsInput.setAttribute("placeholder", "Enter Your Initials");
+  initialsInput.setAttribute("placeholder", "Enter Your Initials Then Press 'Enter'");
   document.getElementById("myForm").appendChild(initialsInput);
   
 }
