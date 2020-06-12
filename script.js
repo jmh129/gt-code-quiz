@@ -191,3 +191,7 @@ document.addEventListener("submit", function (event) {
     window.location.replace("./scorecard.html");
   }
 });
+
+// clearListBtn.addEventListener("click", function(){
+//   console.log("Clear has been clicked.s")
+// })
