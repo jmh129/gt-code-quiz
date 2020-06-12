@@ -5,7 +5,7 @@ var timeEl = document.getElementById("time");
 var cardTitle = document.querySelector(".card-title");
 var cardText = document.querySelector(".card-text");
 var submitButtonEl = document.querySelector(".card-text");
-var correctOrWrongEl = document.getElementById("footer");
+var clearListBtn = document.getElementById("clear-list");
 
 var answersEl;
 var timeLeft;
@@ -125,8 +125,10 @@ function endOfQUiz() {
   initialsInput.setAttribute("id", "text");
   initialsInput.setAttribute("placeholder", "Enter Your Initials");
   document.getElementById("myForm").appendChild(initialsInput);
+  
 }
 
+// FUNCTION TO ADD INITIALS AND SCORE TO LIST 
 function renderHighScores() {
   var ul = document.getElementById("high-scores-list");
   if (ul !== null) {
@@ -177,16 +179,15 @@ submitButtonEl.addEventListener("click", function (event) {
   }
 });
 
+// RENDER INTITIALS TO LIST 
 document.addEventListener("submit", function (event) {
   event.preventDefault();
-  console.log(event.target);
   if (event.target.id === "myForm") {
     var initials = document.getElementById("text");
     var initialsText = initials.value.trim();
-    console.log(initialsText);
     var userObject = { user: initialsText, score: score };
     highScores.push(userObject);
-    console.log(highScores);
     localStorage.setItem("highScores", JSON.stringify(highScores));
+    window.location.replace("./scorecard.html");
   }
 });
