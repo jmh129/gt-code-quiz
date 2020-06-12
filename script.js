@@ -144,6 +144,7 @@ startGameBtnEl.addEventListener("click", function () {
 
 // CHECK IF BUTTON CLICKED CONTAINS ANSWER MOVE TO NEXT QUESTION
 submitButtonEl.addEventListener("click", function (event) {
+  event.preventDefault();
   var element = event.target;
   if (
     element.dataset.index ==
