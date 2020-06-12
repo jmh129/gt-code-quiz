@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <title>Code Quiz</title>
+
+    <!-- Bootstrap Stylesheet -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+      integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+      crossorigin="anonymous"
+    />
+
+    <!-- Local Stylesheet -->
+    <link rel="Stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <!-- Nav Bar -->
+    <nav class="navbar navbar-light bg-light">
+      <a class="navbar-brand" href="#">View Highscores</a>
+      <div id="time">Time: 60</div>
+    </nav>
+    <!-- Main Content  -->
+    <main>
+      <section class="conatiner">
+        <div
+          class="card text-center"
+          style="width: 45rem; margin: 0 auto;"
+        >
+          <div class="card-body" id="start-page">
+            <h5 class="card-title">Coding Quiz Challenge!</h5>
+            <p class="card-text btn-group-vertical">
+              Try to answer the following code-related questions
+              within the time limit. Keep in mind that incorrect
+              answers will penalize your score/time by ten seconds!
+            </p>
+            <ul class="list"></ul>
+            <button class="btn btn-primary" id="start-button">
+              Start Quiz
+            </button>
+            <div class="card-body" id="footer">
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <script src="./script.js"></script>
+  </body>
+</html>
