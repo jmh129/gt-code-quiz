@@ -53,14 +53,18 @@ var arrayOfQuestions = [
       "JavaScript",
       "Terminal/Bash",
       "For Loops",
-      "console.log",
+      "Console.log",
     ],
     answer: 3,
   },
 ];
 
+// START QUIZ FUNCTION - Need to add in function to display score and email form and end if time === 0.
 function renderQuestion() {
   var currentQuestion = arrayOfQuestions[currentQuestionIndex];
+  if (currentQuestionIndex > 4) {
+    alert("End of Quiz! Your score is " + score + ".");
+  }
   cardTitle.textContent = "";
   cardText.textContent = "";
   startGameBtnEl.remove();
@@ -82,26 +86,7 @@ function renderQuestion() {
   }
 }
 
-// BUILD OUT END OF GAME
-
-// BUILD OUT HIGHSCORE PAGE
-
-// TIMER FUNCTION
-function timeRemain() {
-  timeLeft = 60;
-  var timeInterval = setInterval(function () {
-    timeEl.textContent = "Time: " + timeLeft;
-    timeLeft--;
-    // console.log("Timer Started");
-    if (timeLeft === -1) {
-      clearInterval(timeInterval);
-    }
-  }, 1000);
-}
-
-// LOG ANSWERS FUNCTION
-
-// COMPARE ANSWERS FUNCTION
+// COMPARE ANSWERS FUNCTIONS
 function correctAnswer() {
   score = score + 10;
   alert("Correct!");
@@ -111,12 +96,38 @@ function correctAnswer() {
 function wrongAnswer() {
   score = score - 10;
   timeLeft = timeLeft - 10;
-  alert("Wrong");
+  alert("Wrong!");
   currentQuestionIndex++;
 }
 
-// EVENT LISTENERS
+// UNDER CONSTRUCTION
+// function endOfQUiz() {
+//   cardTitle.textContent = "";
+//   cardText.textContent = "";
+//   cardTitle.textContent = "Quiz Complete!";
+//   cardText.textContent = "Your final score is " + score + ".";
+//   // var emailForm = document.createElement("input");
+//   // emailForm.setAttribute("type", "input");
 
+// }
+
+// BUILD OUT HIGHSCORE PAGE seperate html
+
+// TIMER FUNCTION
+function timeRemain() {
+  timeLeft = 5;
+  var timeInterval = setInterval(function () {
+    timeEl.textContent = "Time: " + timeLeft;
+    timeLeft--;
+    // console.log("Timer Started");
+    if (timeLeft <= -1) {
+      clearInterval(timeInterval);
+      alert("Times Up! Your Score is " + score + ".");
+    }
+  }, 1000);
+}
+
+// EVENT LISTENERS
 // START GAME AND BEGIN TIMER
 startGameBtnEl.addEventListener("click", function () {
   timeRemain();
