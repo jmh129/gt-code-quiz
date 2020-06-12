@@ -5,17 +5,26 @@ var timeEl = document.getElementById("time");
 var cardTitle = document.querySelector(".card-title");
 var cardText = document.querySelector(".card-text");
 var submitButtonEl = document.querySelector(".card-text");
-var correctOrWrongEl = document.getElementById("footer");
+var clearListBtn = document.getElementById("clear-list");
 
 var answersEl;
 var timeLeft;
 var score = 0;
 
+// Local Storage Variable 
+var highScores = localStorage.getItem("highScores");
+if (!highScores) {
+  highScores = [];
+} else {
+  highScores = JSON.parse(highScores);
+}
+
+// Question Variables 
 var currentQuestionIndex = 0;
 var arrayOfQuestions = [
   {
     question: "Commonly used data types DO NOT include:",
-    answers: ["strings", "booleans", "alerts", "numbers"],
+    answers: ["Strings", "Booleans", "Alerts", "Numbers"],
     answer: 2,
   },
   {
@@ -58,7 +67,7 @@ var arrayOfQuestions = [
   },
 ];
 
-// START QUIZ FUNCTION - Need to add in function to display score and email form and end if time === 0.
+// START QUIZ FUNCTION
 function renderQuestion() {
   var currentQuestion = arrayOfQuestions[currentQuestionIndex];
   if (currentQuestionIndex > 4) {
@@ -102,23 +111,35 @@ function wrongAnswer() {
 
 // END OF QUIZ INITIALS INPUT
 function endOfQUiz() {
-  // alert("End of Quiz! Your score is " + score + ".");
   cardTitle.textContent = "";
   cardText.textContent = "";
   cardTitle.textContent = "Quiz Complete!";
   var createScoreCard = document.createElement("p");
   createScoreCard.textContent = "Your final score is " + score + ".";
   cardTitle.appendChild(createScoreCard);
+
+  // Enter Initials Section
   var enterInitials = document.createElement("form");
   enterInitials.setAttribute("id", "myForm");
   createScoreCard.appendChild(enterInitials);
+
   var initialsInput = document.createElement("input");
   initialsInput.setAttribute("id", "text");
   initialsInput.setAttribute("placeholder", "Enter Your Initials");
   document.getElementById("myForm").appendChild(initialsInput);
+  
 }
 
-// BUILD OUT HIGHSCORE PAGE seperate html
+// FUNCTION TO ADD INITIALS AND SCORE TO LIST 
+function renderHighScores() {
+  var ul = document.getElementById("high-scores-list");
+  if (ul !== null) {
+  var htmlStr = "";
+  for (var i = 0; i < highScores.length; i++) {
+    htmlStr += `<li> ${highScores[i].user}, ${highScores[i].score}</li>`;
+  }
+  ul.innerHTML = htmlStr;
+}}
 
 // TIMER FUNCTION
 function timeRemain() {
@@ -134,6 +155,8 @@ function timeRemain() {
     }
   }, 1000);
 }
+
+renderHighScores()
 
 // EVENT LISTENERS
 // START GAME AND BEGIN TIMER
@@ -155,5 +178,18 @@ submitButtonEl.addEventListener("click", function (event) {
   } else {
     wrongAnswer();
     renderQuestion();
+  }
+});
+
+// RENDER INTITIALS TO LIST 
+document.addEventListener("submit", function (event) {
+  event.preventDefault();
+  if (event.target.id === "myForm") {
+    var initials = document.getElementById("text");
+    var initialsText = initials.value.trim();
+    var userObject = { user: initialsText, score: score };
+    highScores.push(userObject);
+    localStorage.setItem("highScores", JSON.stringify(highScores));
+    window.location.replace("./scorecard.html");
   }
 });

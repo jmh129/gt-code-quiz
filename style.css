@@ -29,3 +29,15 @@
 .card-text {
     float: left;
 }
+
+#text {
+    margin-top: 10px;
+}
+
+.high-scores {
+    text-align: left;
+}
+
+.a {
+    color: #fff;
+}
