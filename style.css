@@ -29,3 +29,7 @@
 .card-text {
     float: left;
 }
+
+#text {
+    margin-top: 10px;
+}
