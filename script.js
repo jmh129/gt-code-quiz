@@ -11,6 +11,7 @@ var answersEl;
 var timeLeft;
 var score = 0;
 
+// Local Storage Variable 
 var highScores = localStorage.getItem("highScores");
 if (!highScores) {
   highScores = [];
@@ -18,6 +19,7 @@ if (!highScores) {
   highScores = JSON.parse(highScores);
 }
 
+// Question Variables 
 var currentQuestionIndex = 0;
 var arrayOfQuestions = [
   {
@@ -65,7 +67,7 @@ var arrayOfQuestions = [
   },
 ];
 
-// START QUIZ FUNCTION - Need to add in function to display score and email form and end if time === 0.
+// START QUIZ FUNCTION
 function renderQuestion() {
   var currentQuestion = arrayOfQuestions[currentQuestionIndex];
   if (currentQuestionIndex > 4) {
@@ -191,7 +193,3 @@ document.addEventListener("submit", function (event) {
     window.location.replace("./scorecard.html");
   }
 });
-
-// clearListBtn.addEventListener("click", function(){
-//   console.log("Clear has been clicked.s")
-// })
