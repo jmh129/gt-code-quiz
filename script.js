@@ -11,11 +11,18 @@ var answersEl;
 var timeLeft;
 var score = 0;
 
+var highScores = localStorage.getItem("highScores");
+if (!highScores) {
+  highScores = [];
+} else {
+  highScores = JSON.parse(highScores);
+}
+
 var currentQuestionIndex = 0;
 var arrayOfQuestions = [
   {
     question: "Commonly used data types DO NOT include:",
-    answers: ["strings", "booleans", "alerts", "numbers"],
+    answers: ["Strings", "Booleans", "Alerts", "Numbers"],
     answer: 2,
   },
   {
@@ -102,23 +109,33 @@ function wrongAnswer() {
 
 // END OF QUIZ INITIALS INPUT
 function endOfQUiz() {
-  // alert("End of Quiz! Your score is " + score + ".");
   cardTitle.textContent = "";
   cardText.textContent = "";
   cardTitle.textContent = "Quiz Complete!";
   var createScoreCard = document.createElement("p");
   createScoreCard.textContent = "Your final score is " + score + ".";
   cardTitle.appendChild(createScoreCard);
+
+  // Enter Initials Section
   var enterInitials = document.createElement("form");
   enterInitials.setAttribute("id", "myForm");
   createScoreCard.appendChild(enterInitials);
+
   var initialsInput = document.createElement("input");
   initialsInput.setAttribute("id", "text");
   initialsInput.setAttribute("placeholder", "Enter Your Initials");
   document.getElementById("myForm").appendChild(initialsInput);
 }
 
-// BUILD OUT HIGHSCORE PAGE seperate html
+function renderHighScores() {
+  var ul = document.getElementById("high-scores-list");
+  if (ul !== null) {
+  var htmlStr = "";
+  for (var i = 0; i < highScores.length; i++) {
+    htmlStr += `<li> ${highScores[i].user}, ${highScores[i].score}</li>`;
+  }
+  ul.innerHTML = htmlStr;
+}}
 
 // TIMER FUNCTION
 function timeRemain() {
@@ -134,6 +151,8 @@ function timeRemain() {
     }
   }, 1000);
 }
+
+renderHighScores()
 
 // EVENT LISTENERS
 // START GAME AND BEGIN TIMER
@@ -155,5 +174,19 @@ submitButtonEl.addEventListener("click", function (event) {
   } else {
     wrongAnswer();
     renderQuestion();
+  }
+});
+
+document.addEventListener("submit", function (event) {
+  event.preventDefault();
+  console.log(event.target);
+  if (event.target.id === "myForm") {
+    var initials = document.getElementById("text");
+    var initialsText = initials.value.trim();
+    console.log(initialsText);
+    var userObject = { user: initialsText, score: score };
+    highScores.push(userObject);
+    console.log(highScores);
+    localStorage.setItem("highScores", JSON.stringify(highScores));
   }
 });
