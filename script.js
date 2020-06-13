@@ -33,7 +33,7 @@ var arrayOfQuestions = [
     answers: [
       "Quotes",
       "Curly Brackets",
-      "Paranthese",
+      "Parenthesis",
       "Square Brackets",
     ],
     answer: 2,
