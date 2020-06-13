@@ -147,10 +147,8 @@ function timeRemain() {
   var timeInterval = setInterval(function () {
     timeEl.textContent = "Time: " + timeLeft;
     timeLeft--;
-    // console.log("Timer Started");
     if (timeLeft <= -1) {
       clearInterval(timeInterval);
-      // alert("Quiz Over! Your Score is " + score + ".");
       endOfQUiz();
     }
   }, 1000);
