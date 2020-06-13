@@ -1,7 +1,7 @@
 # 04 Web APIs: Code Quiz
 
 ## Introduction
-This website was developed as part of the Georgia Tech Full-Stack program HW # Web API's: Code Quiz. The goal of this project was to develop a timed code quiz wiht mutliple choice questions. The app utilizes Javascript, HTML and CSS.
+This website was developed as part of the Georgia Tech Full-Stack program HW #4 Web API's: Code Quiz. The goal of this project was to develop a timed code quiz wiht mutliple choice questions. The app utilizes Javascript, HTML and CSS.
 
 ## Table of Contents
 - Installation
