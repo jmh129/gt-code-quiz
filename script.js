@@ -103,7 +103,7 @@ function correctAnswer() {
 }
 
 function wrongAnswer() {
-  score = score - 10;
+  score = score - 20;
   timeLeft = timeLeft - 10;
   alert("Wrong! Ten Seconds has been deducted...");
   currentQuestionIndex++;
