@@ -97,7 +97,7 @@ function renderQuestion() {
 
 // COMPARE ANSWERS FUNCTIONS
 function correctAnswer() {
-  score = score + 10;
+  score = score + 20;
   alert("Correct!");
   currentQuestionIndex++;
 }
